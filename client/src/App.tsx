@@ -1,9 +1,9 @@
-import React from "react";
-import { useQuery, gql } from "@apollo/client";
-import "./App.css";
-import { CardRow, Container, Footer, Header } from "./styles/elements";
-import Wilder from "./Wilder";
-import AddWilder from "./AddWilder";
+import React from 'react';
+import { useQuery, gql } from '@apollo/client';
+import './App.css';
+import { CardRow, Container, Footer, Header } from './styles/elements';
+import Wilder from './Wilder';
+import AddWilder from './AddWilder';
 
 const ALL_WILDERS = gql`
   query GetAllWilders {
@@ -16,21 +16,22 @@ const ALL_WILDERS = gql`
 `;
 
 export type WilderData = {
-  _id: string
-  name:string
-  city: string
-}
+  _id: string;
+  name: string;
+  city: string;
+};
 
 function App() {
-  
-  const { loading, error, data } = useQuery<{wilders:WilderData[]}>(ALL_WILDERS);
+  const { loading, error, data } = useQuery<{ wilders: WilderData[] }>(
+    ALL_WILDERS
+  );
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error : {error.message}</p>;
   return (
     <div>
       <Header>
         <Container>
-          <h1>Wilders Book with CD</h1>
+          <h1>Wilders Book with ID</h1>
         </Container>
       </Header>
       <Container>
